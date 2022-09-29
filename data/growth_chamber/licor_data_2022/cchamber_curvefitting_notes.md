@@ -6,3 +6,6 @@
 - plant 118 has no pre heatwave
 	-  found it as 118b
 - no 121 post heatwave
+- two curves for plant 129
+- no pretreatment for plant 13
+- no pretreatment for plant 136

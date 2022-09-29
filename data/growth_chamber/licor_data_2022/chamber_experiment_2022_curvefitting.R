@@ -1334,6 +1334,654 @@ colnames(aci_data_id122_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_
                                         'aci_tcorrect', 'aci_fittpu')
 curve_fits <- rbind(curve_fits, aci_data_id122_post_data)
 
+##############################################################################
+##############################################################################
+###########id122
+##############################################################################
+##############################################################################
+### plant id122 pre_heatwave
+aci_data_id122_pre = subset(aci_data, id == ids[15] & meas.type == 'pre_heatwave')
+aci_data_id122_pre[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id122_pre)
+#### fit aci curve
+fit_aci_id122_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                           # citransition = 300,
+                           Tcorrect = FALSE,
+                           fitTPU = TRUE,
+                           fitmethod = 'bilinear',
+                           data = aci_data_id122_pre)
+summary(fit_aci_id122_pre)
+#### plot
+plot(fit_aci_id122_pre)
+#### add to dataframe
+aci_data_id122_pre_data <- cbind(aci_data_id122_pre[1, c(10, 284, 9, 14, 16, 19)],
+                                 mean(aci_data_id122_pre[,30]),
+                                 mean(aci_data_id122_pre[,118]),
+                                 fit_aci_id122_pre[[2]][1,1],
+                                 fit_aci_id122_pre[[2]][1,2],
+                                 fit_aci_id122_pre[[2]][2,1],
+                                 fit_aci_id122_pre[[2]][2,2],
+                                 fit_aci_id122_pre[[2]][3,1],
+                                 fit_aci_id122_pre[[2]][3,2],
+                                 fit_aci_id122_pre[[2]][4,1],
+                                 fit_aci_id122_pre[[2]][4,2],
+                                 fit_aci_id122_pre$RMSE,
+                                 fit_aci_id122_pre$Ci_transition,
+                                 fit_aci_id122_pre$citransition,
+                                 fit_aci_id122_pre$Km,
+                                 fit_aci_id122_pre$GammaStar,
+                                 fit_aci_id122_pre$fitmethod,
+                                 fit_aci_id122_pre$Tcorrect,
+                                 fit_aci_id122_pre$fitTPU)
+colnames(aci_data_id122_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                       'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                       'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                       'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                       'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                       'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id122_pre_data)
+
+### plant id122 post_heatwave
+aci_data_id122_post = subset(aci_data, id == ids[15] & meas.type == 'post_heatwave')
+aci_data_id122_post[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id122_post)
+#### fit aci curve
+fit_aci_id122_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                            # citransition = 300,
+                            Tcorrect = FALSE,
+                            fitTPU = TRUE,
+                            fitmethod = 'bilinear',
+                            data = aci_data_id122_post)
+summary(fit_aci_id122_post)
+#### plot
+plot(fit_aci_id122_post)
+#### add to dataframe
+aci_data_id122_post_data <- cbind(aci_data_id122_post[1, c(10, 284, 9, 14, 16, 19)],
+                                  mean(aci_data_id122_post[,30]),
+                                  mean(aci_data_id122_post[,118]),
+                                  fit_aci_id122_post[[2]][1,1],
+                                  fit_aci_id122_post[[2]][1,2],
+                                  fit_aci_id122_post[[2]][2,1],
+                                  fit_aci_id122_post[[2]][2,2],
+                                  fit_aci_id122_post[[2]][3,1],
+                                  fit_aci_id122_post[[2]][3,2],
+                                  fit_aci_id122_post[[2]][4,1],
+                                  fit_aci_id122_post[[2]][4,2],
+                                  fit_aci_id122_post$RMSE,
+                                  fit_aci_id122_post$Ci_transition,
+                                  fit_aci_id122_post$citransition,
+                                  fit_aci_id122_post$Km,
+                                  fit_aci_id122_post$GammaStar,
+                                  fit_aci_id122_post$fitmethod,
+                                  fit_aci_id122_post$Tcorrect,
+                                  fit_aci_id122_post$fitTPU)
+colnames(aci_data_id122_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                        'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id122_post_data)
+
+
+
+##############################################################################
+##############################################################################
+###########id129
+##############################################################################
+##############################################################################
+### plant id129 pre_heatwave
+aci_data_id129_pre = subset(aci_data, id == ids[16] & meas.type == 'pre_heatwave')[c(1:95),]
+aci_data_id129_pre[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id129_pre)
+#### fit aci curve
+fit_aci_id129_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                           # citransition = 300,
+                           Tcorrect = FALSE,
+                           fitTPU = TRUE,
+                           fitmethod = 'bilinear',
+                           data = aci_data_id129_pre)
+summary(fit_aci_id129_pre)
+#### plot
+plot(fit_aci_id129_pre)
+#### add to dataframe
+aci_data_id129_pre_data <- cbind(aci_data_id129_pre[1, c(10, 284, 9, 14, 16, 19)],
+                                 mean(aci_data_id129_pre[,30]),
+                                 mean(aci_data_id129_pre[,118]),
+                                 fit_aci_id129_pre[[2]][1,1],
+                                 fit_aci_id129_pre[[2]][1,2],
+                                 fit_aci_id129_pre[[2]][2,1],
+                                 fit_aci_id129_pre[[2]][2,2],
+                                 fit_aci_id129_pre[[2]][3,1],
+                                 fit_aci_id129_pre[[2]][3,2],
+                                 fit_aci_id129_pre[[2]][4,1],
+                                 fit_aci_id129_pre[[2]][4,2],
+                                 fit_aci_id129_pre$RMSE,
+                                 fit_aci_id129_pre$Ci_transition,
+                                 fit_aci_id129_pre$citransition,
+                                 fit_aci_id129_pre$Km,
+                                 fit_aci_id129_pre$GammaStar,
+                                 fit_aci_id129_pre$fitmethod,
+                                 fit_aci_id129_pre$Tcorrect,
+                                 fit_aci_id129_pre$fitTPU)
+colnames(aci_data_id129_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                       'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                       'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                       'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                       'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                       'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id129_pre_data)
+
+### plant id129 post_heatwave
+aci_data_id129_post = subset(aci_data, id == ids[16] & meas.type == 'post_heatwave')
+aci_data_id129_post[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id129_post)
+#### fit aci curve
+fit_aci_id129_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                            # citransition = 300,
+                            Tcorrect = FALSE,
+                            fitTPU = TRUE,
+                            fitmethod = 'bilinear',
+                            data = aci_data_id129_post)
+summary(fit_aci_id129_post)
+#### plot
+plot(fit_aci_id129_post)
+#### add to dataframe
+aci_data_id129_post_data <- cbind(aci_data_id129_post[1, c(10, 284, 9, 14, 16, 19)],
+                                  mean(aci_data_id129_post[,30]),
+                                  mean(aci_data_id129_post[,118]),
+                                  fit_aci_id129_post[[2]][1,1],
+                                  fit_aci_id129_post[[2]][1,2],
+                                  fit_aci_id129_post[[2]][2,1],
+                                  fit_aci_id129_post[[2]][2,2],
+                                  fit_aci_id129_post[[2]][3,1],
+                                  fit_aci_id129_post[[2]][3,2],
+                                  fit_aci_id129_post[[2]][4,1],
+                                  fit_aci_id129_post[[2]][4,2],
+                                  fit_aci_id129_post$RMSE,
+                                  fit_aci_id129_post$Ci_transition,
+                                  fit_aci_id129_post$citransition,
+                                  fit_aci_id129_post$Km,
+                                  fit_aci_id129_post$GammaStar,
+                                  fit_aci_id129_post$fitmethod,
+                                  fit_aci_id129_post$Tcorrect,
+                                  fit_aci_id129_post$fitTPU)
+colnames(aci_data_id129_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                        'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id129_post_data)
+
+##############################################################################
+##############################################################################
+###########id13
+##############################################################################
+##############################################################################
+### plant id13 pre_heatwave
+# aci_data_id13_pre = subset(aci_data, id == ids[17] & meas.type == 'pre_heatwave')
+# aci_data_id13_pre[, c(6,9:10)]
+# #### plot raw data and remove values if needed
+# plot(Adyn ~ Ci, data = aci_data_id13_pre)
+# #### fit aci curve
+# fit_aci_id13_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+#                            # citransition = 300,
+#                            Tcorrect = FALSE,
+#                            fitTPU = TRUE,
+#                            fitmethod = 'bilinear',
+#                            data = aci_data_id13_pre)
+# summary(fit_aci_id13_pre)
+# #### plot
+# plot(fit_aci_id13_pre)
+# #### add to dataframe
+# aci_data_id13_pre_data <- cbind(aci_data_id13_pre[1, c(10, 284, 9, 14, 16, 19)],
+#                                  mean(aci_data_id13_pre[,30]),
+#                                  mean(aci_data_id13_pre[,118]),
+#                                  fit_aci_id13_pre[[2]][1,1],
+#                                  fit_aci_id13_pre[[2]][1,2],
+#                                  fit_aci_id13_pre[[2]][2,1],
+#                                  fit_aci_id13_pre[[2]][2,2],
+#                                  fit_aci_id13_pre[[2]][3,1],
+#                                  fit_aci_id13_pre[[2]][3,2],
+#                                  fit_aci_id13_pre[[2]][4,1],
+#                                  fit_aci_id13_pre[[2]][4,2],
+#                                  fit_aci_id13_pre$RMSE,
+#                                  fit_aci_id13_pre$Ci_transition,
+#                                  fit_aci_id13_pre$citransition,
+#                                  fit_aci_id13_pre$Km,
+#                                  fit_aci_id13_pre$GammaStar,
+#                                  fit_aci_id13_pre$fitmethod,
+#                                  fit_aci_id13_pre$Tcorrect,
+#                                  fit_aci_id13_pre$fitTPU)
+# colnames(aci_data_id13_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+#                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+#                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+#                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+#                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+#                                        'aci_tcorrect', 'aci_fittpu')
+# curve_fits <- rbind(curve_fits, aci_data_id13_pre_data)
+# 
+# ### plant id13 post_heatwave
+# aci_data_id13_post = subset(aci_data, id == ids[17] & meas.type == 'post_heatwave')
+# aci_data_id13_post[, c(6,9:10)]
+# #### plot raw data and remove values if needed
+# plot(Adyn ~ Ci, data = aci_data_id13_post)
+# #### fit aci curve
+# fit_aci_id13_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+#                             # citransition = 300,
+#                             Tcorrect = FALSE,
+#                             fitTPU = TRUE,
+#                             fitmethod = 'bilinear',
+#                             data = aci_data_id13_post)
+# summary(fit_aci_id13_post)
+# #### plot
+# plot(fit_aci_id13_post)
+# #### add to dataframe
+# aci_data_id13_post_data <- cbind(aci_data_id13_post[1, c(10, 284, 9, 14, 16, 19)],
+#                                   mean(aci_data_id13_post[,30]),
+#                                   mean(aci_data_id13_post[,118]),
+#                                   fit_aci_id13_post[[2]][1,1],
+#                                   fit_aci_id13_post[[2]][1,2],
+#                                   fit_aci_id13_post[[2]][2,1],
+#                                   fit_aci_id13_post[[2]][2,2],
+#                                   fit_aci_id13_post[[2]][3,1],
+#                                   fit_aci_id13_post[[2]][3,2],
+#                                   fit_aci_id13_post[[2]][4,1],
+#                                   fit_aci_id13_post[[2]][4,2],
+#                                   fit_aci_id13_post$RMSE,
+#                                   fit_aci_id13_post$Ci_transition,
+#                                   fit_aci_id13_post$citransition,
+#                                   fit_aci_id13_post$Km,
+#                                   fit_aci_id13_post$GammaStar,
+#                                   fit_aci_id13_post$fitmethod,
+#                                   fit_aci_id13_post$Tcorrect,
+#                                   fit_aci_id13_post$fitTPU)
+# colnames(aci_data_id13_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+#                                         'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+#                                         'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+#                                         'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+#                                         'aci_km', 'aci_gammastar', 'aci_fitmethod',
+#                                         'aci_tcorrect', 'aci_fittpu')
+# curve_fits <- rbind(curve_fits, aci_data_id13_post_data)
+
+##############################################################################
+##############################################################################
+###########id131
+##############################################################################
+##############################################################################
+### plant id131 pre_heatwave
+aci_data_id131_pre = subset(aci_data, id == ids[18] & meas.type == 'pre_heatwave')
+aci_data_id131_pre[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id131_pre)
+#### fit aci curve
+fit_aci_id131_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                           # citransition = 300,
+                           Tcorrect = FALSE,
+                           fitTPU = TRUE,
+                           fitmethod = 'bilinear',
+                           data = aci_data_id131_pre)
+summary(fit_aci_id131_pre)
+#### plot
+plot(fit_aci_id131_pre)
+#### add to dataframe
+aci_data_id131_pre_data <- cbind(aci_data_id131_pre[1, c(10, 284, 9, 14, 16, 19)],
+                                 mean(aci_data_id131_pre[,30]),
+                                 mean(aci_data_id131_pre[,118]),
+                                 fit_aci_id131_pre[[2]][1,1],
+                                 fit_aci_id131_pre[[2]][1,2],
+                                 fit_aci_id131_pre[[2]][2,1],
+                                 fit_aci_id131_pre[[2]][2,2],
+                                 fit_aci_id131_pre[[2]][3,1],
+                                 fit_aci_id131_pre[[2]][3,2],
+                                 fit_aci_id131_pre[[2]][4,1],
+                                 fit_aci_id131_pre[[2]][4,2],
+                                 fit_aci_id131_pre$RMSE,
+                                 fit_aci_id131_pre$Ci_transition,
+                                 fit_aci_id131_pre$citransition,
+                                 fit_aci_id131_pre$Km,
+                                 fit_aci_id131_pre$GammaStar,
+                                 fit_aci_id131_pre$fitmethod,
+                                 fit_aci_id131_pre$Tcorrect,
+                                 fit_aci_id131_pre$fitTPU)
+colnames(aci_data_id131_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                       'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                       'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                       'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                       'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                       'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id131_pre_data)
+
+### plant id131 post_heatwave
+aci_data_id131_post = subset(aci_data, id == ids[18] & meas.type == 'post_heatwave')
+aci_data_id131_post[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id131_post)
+#### fit aci curve
+fit_aci_id131_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                            # citransition = 300,
+                            Tcorrect = FALSE,
+                            fitTPU = TRUE,
+                            fitmethod = 'bilinear',
+                            data = aci_data_id131_post)
+summary(fit_aci_id131_post)
+#### plot
+plot(fit_aci_id131_post)
+#### add to dataframe
+aci_data_id131_post_data <- cbind(aci_data_id131_post[1, c(10, 284, 9, 14, 16, 19)],
+                                  mean(aci_data_id131_post[,30]),
+                                  mean(aci_data_id131_post[,118]),
+                                  fit_aci_id131_post[[2]][1,1],
+                                  fit_aci_id131_post[[2]][1,2],
+                                  fit_aci_id131_post[[2]][2,1],
+                                  fit_aci_id131_post[[2]][2,2],
+                                  fit_aci_id131_post[[2]][3,1],
+                                  fit_aci_id131_post[[2]][3,2],
+                                  fit_aci_id131_post[[2]][4,1],
+                                  fit_aci_id131_post[[2]][4,2],
+                                  fit_aci_id131_post$RMSE,
+                                  fit_aci_id131_post$Ci_transition,
+                                  fit_aci_id131_post$citransition,
+                                  fit_aci_id131_post$Km,
+                                  fit_aci_id131_post$GammaStar,
+                                  fit_aci_id131_post$fitmethod,
+                                  fit_aci_id131_post$Tcorrect,
+                                  fit_aci_id131_post$fitTPU)
+colnames(aci_data_id131_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                        'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id131_post_data)
+
+##############################################################################
+##############################################################################
+###########id133
+##############################################################################
+##############################################################################
+### plant id133 pre_heatwave
+aci_data_id133_pre = subset(aci_data, id == ids[19] & meas.type == 'pre_heatwave')
+aci_data_id133_pre[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id133_pre)
+#### fit aci curve
+fit_aci_id133_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                           # citransition = 300,
+                           Tcorrect = FALSE,
+                           fitTPU = TRUE,
+                           fitmethod = 'bilinear',
+                           data = aci_data_id133_pre)
+summary(fit_aci_id133_pre)
+#### plot
+plot(fit_aci_id133_pre)
+#### add to dataframe
+aci_data_id133_pre_data <- cbind(aci_data_id133_pre[1, c(10, 284, 9, 14, 16, 19)],
+                                 mean(aci_data_id133_pre[,30]),
+                                 mean(aci_data_id133_pre[,118]),
+                                 fit_aci_id133_pre[[2]][1,1],
+                                 fit_aci_id133_pre[[2]][1,2],
+                                 fit_aci_id133_pre[[2]][2,1],
+                                 fit_aci_id133_pre[[2]][2,2],
+                                 fit_aci_id133_pre[[2]][3,1],
+                                 fit_aci_id133_pre[[2]][3,2],
+                                 fit_aci_id133_pre[[2]][4,1],
+                                 fit_aci_id133_pre[[2]][4,2],
+                                 fit_aci_id133_pre$RMSE,
+                                 fit_aci_id133_pre$Ci_transition,
+                                 fit_aci_id133_pre$citransition,
+                                 fit_aci_id133_pre$Km,
+                                 fit_aci_id133_pre$GammaStar,
+                                 fit_aci_id133_pre$fitmethod,
+                                 fit_aci_id133_pre$Tcorrect,
+                                 fit_aci_id133_pre$fitTPU)
+colnames(aci_data_id133_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                       'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                       'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                       'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                       'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                       'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id133_pre_data)
+
+### plant id133 post_heatwave
+aci_data_id133_post = subset(aci_data, id == ids[19] & meas.type == 'post_heatwave')
+aci_data_id133_post[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id133_post)
+#### fit aci curve
+fit_aci_id133_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                            # citransition = 300,
+                            Tcorrect = FALSE,
+                            fitTPU = TRUE,
+                            fitmethod = 'bilinear',
+                            data = aci_data_id133_post)
+summary(fit_aci_id133_post)
+#### plot
+plot(fit_aci_id133_post)
+#### add to dataframe
+aci_data_id133_post_data <- cbind(aci_data_id133_post[1, c(10, 284, 9, 14, 16, 19)],
+                                  mean(aci_data_id133_post[,30]),
+                                  mean(aci_data_id133_post[,118]),
+                                  fit_aci_id133_post[[2]][1,1],
+                                  fit_aci_id133_post[[2]][1,2],
+                                  fit_aci_id133_post[[2]][2,1],
+                                  fit_aci_id133_post[[2]][2,2],
+                                  fit_aci_id133_post[[2]][3,1],
+                                  fit_aci_id133_post[[2]][3,2],
+                                  fit_aci_id133_post[[2]][4,1],
+                                  fit_aci_id133_post[[2]][4,2],
+                                  fit_aci_id133_post$RMSE,
+                                  fit_aci_id133_post$Ci_transition,
+                                  fit_aci_id133_post$citransition,
+                                  fit_aci_id133_post$Km,
+                                  fit_aci_id133_post$GammaStar,
+                                  fit_aci_id133_post$fitmethod,
+                                  fit_aci_id133_post$Tcorrect,
+                                  fit_aci_id133_post$fitTPU)
+colnames(aci_data_id133_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                        'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id133_post_data)
+
+##############################################################################
+##############################################################################
+###########id136
+##############################################################################
+##############################################################################
+### plant id136 pre_heatwave
+# aci_data_id136_pre = subset(aci_data, id == ids[20] & meas.type == 'pre_heatwave')
+# aci_data_id136_pre[, c(6,9:10)]
+# #### plot raw data and remove values if needed
+# plot(Adyn ~ Ci, data = aci_data_id136_pre)
+# #### fit aci curve
+# fit_aci_id136_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+#                            # citransition = 300,
+#                            Tcorrect = FALSE,
+#                            fitTPU = TRUE,
+#                            fitmethod = 'bilinear',
+#                            data = aci_data_id136_pre)
+# summary(fit_aci_id136_pre)
+# #### plot
+# plot(fit_aci_id136_pre)
+# #### add to dataframe
+# aci_data_id136_pre_data <- cbind(aci_data_id136_pre[1, c(10, 284, 9, 14, 16, 19)],
+#                                  mean(aci_data_id136_pre[,30]),
+#                                  mean(aci_data_id136_pre[,118]),
+#                                  fit_aci_id136_pre[[2]][1,1],
+#                                  fit_aci_id136_pre[[2]][1,2],
+#                                  fit_aci_id136_pre[[2]][2,1],
+#                                  fit_aci_id136_pre[[2]][2,2],
+#                                  fit_aci_id136_pre[[2]][3,1],
+#                                  fit_aci_id136_pre[[2]][3,2],
+#                                  fit_aci_id136_pre[[2]][4,1],
+#                                  fit_aci_id136_pre[[2]][4,2],
+#                                  fit_aci_id136_pre$RMSE,
+#                                  fit_aci_id136_pre$Ci_transition,
+#                                  fit_aci_id136_pre$citransition,
+#                                  fit_aci_id136_pre$Km,
+#                                  fit_aci_id136_pre$GammaStar,
+#                                  fit_aci_id136_pre$fitmethod,
+#                                  fit_aci_id136_pre$Tcorrect,
+#                                  fit_aci_id136_pre$fitTPU)
+# colnames(aci_data_id136_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+#                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+#                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+#                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+#                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+#                                        'aci_tcorrect', 'aci_fittpu')
+# curve_fits <- rbind(curve_fits, aci_data_id136_pre_data)
+# 
+# ### plant id136 post_heatwave
+# aci_data_id136_post = subset(aci_data, id == ids[20] & meas.type == 'post_heatwave')
+# aci_data_id136_post[, c(6,9:10)]
+# #### plot raw data and remove values if needed
+# plot(Adyn ~ Ci, data = aci_data_id136_post)
+# #### fit aci curve
+# fit_aci_id136_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+#                             # citransition = 300,
+#                             Tcorrect = FALSE,
+#                             fitTPU = TRUE,
+#                             fitmethod = 'bilinear',
+#                             data = aci_data_id136_post)
+# summary(fit_aci_id136_post)
+# #### plot
+# plot(fit_aci_id136_post)
+# #### add to dataframe
+# aci_data_id136_post_data <- cbind(aci_data_id136_post[1, c(10, 284, 9, 14, 16, 19)],
+#                                   mean(aci_data_id136_post[,30]),
+#                                   mean(aci_data_id136_post[,118]),
+#                                   fit_aci_id136_post[[2]][1,1],
+#                                   fit_aci_id136_post[[2]][1,2],
+#                                   fit_aci_id136_post[[2]][2,1],
+#                                   fit_aci_id136_post[[2]][2,2],
+#                                   fit_aci_id136_post[[2]][3,1],
+#                                   fit_aci_id136_post[[2]][3,2],
+#                                   fit_aci_id136_post[[2]][4,1],
+#                                   fit_aci_id136_post[[2]][4,2],
+#                                   fit_aci_id136_post$RMSE,
+#                                   fit_aci_id136_post$Ci_transition,
+#                                   fit_aci_id136_post$citransition,
+#                                   fit_aci_id136_post$Km,
+#                                   fit_aci_id136_post$GammaStar,
+#                                   fit_aci_id136_post$fitmethod,
+#                                   fit_aci_id136_post$Tcorrect,
+#                                   fit_aci_id136_post$fitTPU)
+# colnames(aci_data_id136_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+#                                         'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+#                                         'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+#                                         'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+#                                         'aci_km', 'aci_gammastar', 'aci_fitmethod',
+#                                         'aci_tcorrect', 'aci_fittpu')
+# curve_fits <- rbind(curve_fits, aci_data_id136_post_data)
+
+##############################################################################
+##############################################################################
+###########id14
+##############################################################################
+##############################################################################
+### plant id14 pre_heatwave
+aci_data_id14_pre = subset(aci_data, id == ids[21] & meas.type == 'pre_heatwave')
+aci_data_id14_pre[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id14_pre)
+#### fit aci curve
+fit_aci_id14_pre = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                           # citransition = 300,
+                           Tcorrect = FALSE,
+                           fitTPU = TRUE,
+                           fitmethod = 'bilinear',
+                           data = aci_data_id14_pre)
+summary(fit_aci_id14_pre)
+#### plot
+plot(fit_aci_id14_pre)
+#### add to dataframe
+aci_data_id14_pre_data <- cbind(aci_data_id14_pre[1, c(10, 284, 9, 14, 16, 19)],
+                                 mean(aci_data_id14_pre[,30]),
+                                 mean(aci_data_id14_pre[,118]),
+                                 fit_aci_id14_pre[[2]][1,1],
+                                 fit_aci_id14_pre[[2]][1,2],
+                                 fit_aci_id14_pre[[2]][2,1],
+                                 fit_aci_id14_pre[[2]][2,2],
+                                 fit_aci_id14_pre[[2]][3,1],
+                                 fit_aci_id14_pre[[2]][3,2],
+                                 fit_aci_id14_pre[[2]][4,1],
+                                 fit_aci_id14_pre[[2]][4,2],
+                                 fit_aci_id14_pre$RMSE,
+                                 fit_aci_id14_pre$Ci_transition,
+                                 fit_aci_id14_pre$citransition,
+                                 fit_aci_id14_pre$Km,
+                                 fit_aci_id14_pre$GammaStar,
+                                 fit_aci_id14_pre$fitmethod,
+                                 fit_aci_id14_pre$Tcorrect,
+                                 fit_aci_id14_pre$fitTPU)
+colnames(aci_data_id14_pre_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                       'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                       'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                       'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                       'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                       'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id14_pre_data)
+
+### plant id14 post_heatwave
+aci_data_id14_post = subset(aci_data, id == ids[21] & meas.type == 'post_heatwave')
+aci_data_id14_post[, c(6,9:10)]
+#### plot raw data and remove values if needed
+plot(Adyn ~ Ci, data = aci_data_id14_post)
+#### fit aci curve
+fit_aci_id14_post = fitaci(varnames = list(ALEAF = 'Adyn', Tleaf = "Tleaf", Ci = "Ci", PPFD = "Qin"),
+                            # citransition = 300,
+                            Tcorrect = FALSE,
+                            fitTPU = TRUE,
+                            fitmethod = 'bilinear',
+                            data = aci_data_id14_post)
+summary(fit_aci_id14_post)
+#### plot
+plot(fit_aci_id14_post)
+#### add to dataframe
+aci_data_id14_post_data <- cbind(aci_data_id14_post[1, c(10, 284, 9, 14, 16, 19)],
+                                  mean(aci_data_id14_post[,30]),
+                                  mean(aci_data_id14_post[,118]),
+                                  fit_aci_id14_post[[2]][1,1],
+                                  fit_aci_id14_post[[2]][1,2],
+                                  fit_aci_id14_post[[2]][2,1],
+                                  fit_aci_id14_post[[2]][2,2],
+                                  fit_aci_id14_post[[2]][3,1],
+                                  fit_aci_id14_post[[2]][3,2],
+                                  fit_aci_id14_post[[2]][4,1],
+                                  fit_aci_id14_post[[2]][4,2],
+                                  fit_aci_id14_post$RMSE,
+                                  fit_aci_id14_post$Ci_transition,
+                                  fit_aci_id14_post$citransition,
+                                  fit_aci_id14_post$Km,
+                                  fit_aci_id14_post$GammaStar,
+                                  fit_aci_id14_post$fitmethod,
+                                  fit_aci_id14_post$Tcorrect,
+                                  fit_aci_id14_post$fitTPU)
+colnames(aci_data_id14_post_data) <- c('id', 'heatwave_time', 'machine', 'anet_420', 'ci_420', 'gs_420',
+                                        'vpd_leaf', 'temperature_leaf', 'vcmax_tleaf', 'vcmax_tleaf_se',
+                                        'jmax_tleaf', 'jmax_tleaf_se', 'rd_tleaf', 'rd_tleaf_se',
+                                        'aci_RMSE', 'aci_ci_transistion', 'aci_ci_transition_set',
+                                        'aci_km', 'aci_gammastar', 'aci_fitmethod',
+                                        'aci_tcorrect', 'aci_fittpu')
+curve_fits <- rbind(curve_fits, aci_data_id14_post_data)
+
+
+
+
+
+
+
+
+
+
 
 
 
